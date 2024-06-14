@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+// use Illuminate\Support\ServiceProvider;
+namespace App\Providers;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,5 +23,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Route::middlewareGroup('api', [
+            // ...
+            \Illuminate\Session\Middleware\StartSession::class,
+        ]);
     }
 }
