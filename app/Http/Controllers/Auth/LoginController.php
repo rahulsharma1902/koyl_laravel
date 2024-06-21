@@ -28,19 +28,4 @@ class LoginController extends Controller
     
         return response()->json($user);
     }
-    // public function login(Request $request)
-    // {
-
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //     ]);
-
-    //     if (Auth::attempt($request->only('email', 'password'))) {
-    //         $request->session()->regenerate();
-    //         return response()->json(Auth::user());
-    //     }
-
-    //     return response()->json(['message' => 'Invalid credentials'], 401);
-    // }
 }

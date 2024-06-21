@@ -13,9 +13,10 @@ class RegisterController extends Controller
 {
 
     public function patientRegister(Request $request) {
+        // return response()->json($request->all());
         $request->validate([
             'doctor_id' => 'required|exists:users,id',
-            'location' => 'required|string|max:255',
+            'location' => 'required',
             'email' => 'required|email|unique:users,email|max:255',
             'password' => 'required|min:8',
         ]);
@@ -115,6 +116,46 @@ class RegisterController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+    }
+
+
+
+
+    public function completeProfile(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'age' => 'required|integer|min:0',
+            'weight' => 'required|numeric|min:0',
+            'race' => 'required|string|max:255',
+            'allergies' => 'nullable|string|max:255',
+            'user_id' => 'required',
+        ]);
+
+        // $user = Auth::user();
+    
+        // if (!$user) {
+        //     return response()->json(['message' => 'Unauthorized'], 401);
+        // }
+    
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->status = 0;
+        $user->save();
+    
+        $patientMeta = PatientMeta::updateOrCreate(
+            ['user_id' => $user->id],
+            [
+                'age' => $request->age,
+                'weight' => $request->weight,
+                'race' => $request->race,
+                'allergies' => $request->allergies,
+                'status' => 0
+            ]
+        );
+    
+        return response()->json(['message' => 'Profile updated successfully'], 200);
     }
     
 }

@@ -79,6 +79,7 @@ return [
         'encrypt_cookies' => Illuminate\Cookie\Middleware\EncryptCookies::class,
         'validate_csrf_token' => Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
         'api'=> Illuminate\Session\Middleware\StartSession::class,
+        'verify_api_token'=>  App\Http\Middleware\VerifyApiToken::class,
     ],
 
 ];

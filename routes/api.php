@@ -21,3 +21,8 @@ Route::post('register-patient', [RegisterController::class, 'patientRegister']);
 Route::post('register-doctor', [DoctorRegisterController::class, 'doctorRegister']);
 
 Route::get('doctors', [DoctorController::class, 'index']);
+
+
+// Route::middleware(['verify_api_token'])->group(function () {
+    Route::post('complete-profile',[RegisterController::class, 'completeProfile']);
+// });
