@@ -151,7 +151,7 @@ class RegisterController extends Controller
                 'weight' => $request->weight,
                 'race' => $request->race,
                 'allergies' => $request->allergies,
-                'status' => 0
+                'status' => 1
             ]
         );
     

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('practice')->nullable();
             $table->text('location')->nullable();
             $table->longtext('doctor_type')->nullable(); 
-            $table->tinyInteger('status')->default(1); // 0 => active  1 => pending
+            $table->tinyInteger('status')->default(0); // 0 => pending  1 => active
             $table->timestamps();
 
         });

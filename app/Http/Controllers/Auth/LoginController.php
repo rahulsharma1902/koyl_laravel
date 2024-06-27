@@ -18,7 +18,7 @@ class LoginController extends Controller
     
         $user = Auth::user();
     
-        if ($user->user_type == 'doctor' && $user->status == 1) {
+        if ($user->user_type == 'doctor' && $user->status == 0) {
             Auth::logout(); 
             return response()->json(['error' => 'Your account is under approval. Please wait for confirmation.'], 401);
         }

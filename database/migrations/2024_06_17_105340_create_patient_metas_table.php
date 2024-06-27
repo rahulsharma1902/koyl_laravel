@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('allergies')->nullable();
             $table->unsignedBigInteger('doctor_id')->nullable(); 
             $table->text('location')->nullable(); 
-            $table->tinyInteger('status')->default(1); // 0 => active  1 => pending
+            $table->tinyInteger('status')->default(0); // 0 => pending  1 => active
             // $table->enum('status', ['active', 'pending', 'other']);
             $table->timestamps();
 

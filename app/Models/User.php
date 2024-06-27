@@ -48,7 +48,14 @@ class User extends Authenticatable
     }
 
 
-    public function doctor_meta(){
-        return $this->hasOne(DoctorMeta::class,'user_id','id');
+
+    public function doctorMeta()
+    {
+        return $this->hasOne(DoctorMeta::class, 'user_id', 'id');
+    }
+
+    public function patientMeta()
+    {
+        return $this->hasOne(PatientMeta::class, 'user_id', 'id');
     }
 }
